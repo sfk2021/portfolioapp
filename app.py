@@ -74,7 +74,7 @@ with col1:
 with col2:
     st.link_button(
         "LinkedIn",
-        "www.linkedin.com/in/saba-khan-791061216"
+        "http://linkedin.com/in/saba-khan-791061216"
     )
 
 with col3:
