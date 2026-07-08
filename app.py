@@ -1,6 +1,8 @@
 import streamlit as st
-import plotly.express as px
-import pandas as pd
+
+# -----------------------------------
+# PAGE CONFIG
+# -----------------------------------
 
 st.set_page_config(
     page_title="Saba Khan | AI Engineer Portfolio",
@@ -8,231 +10,219 @@ st.set_page_config(
     layout="wide"
 )
 
-# -----------------------------
+# -----------------------------------
 # CUSTOM CSS
-# -----------------------------
+# -----------------------------------
 
 st.markdown("""
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+html, body, [class*="css"] {
+    font-family: 'Inter', sans-serif;
+}
 
 .main {
     background-color: #F8FAFC;
 }
 
 .hero {
-    padding: 40px;
-    border-radius: 20px;
-    background: linear-gradient(90deg,#2563EB,#06B6D4);
-    text-align:center;
-    color:white;
+    padding: 60px;
+    border-radius: 30px;
+    background: linear-gradient(135deg,#2563EB,#06B6D4);
+    color: white;
+    text-align: center;
+    box-shadow: 0 20px 50px rgba(37,99,235,0.25);
 }
 
 .project-card {
-    background:white;
-    padding:20px;
-    border-radius:15px;
-    box-shadow:0px 3px 10px rgba(0,0,0,0.1);
-    margin-bottom:20px;
+    background: white;
+    border-radius: 24px;
+    padding: 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
 }
 
-.skill-card {
+.skill-badge {
+    display:inline-block;
+    padding:10px 16px;
+    margin:5px;
+    border-radius:999px;
     background:#EFF6FF;
-    padding:15px;
-    border-radius:12px;
-    text-align:center;
-    font-weight:bold;
+    color:#2563EB;
+    font-weight:600;
 }
 
 </style>
 """, unsafe_allow_html=True)
+
+# -----------------------------------
+# HERO
+# -----------------------------------
+
 st.markdown("""
 <div class="hero">
-
 <h1>🚀 Saba Khan</h1>
-
-<h3>
-AI Engineer | Azure AI Engineer Associate |
-Machine Learning Developer
-</h3>
-
+<h3>AI Engineer | Azure AI Engineer Associate | Machine Learning Developer</h3>
 <p>
 Passionate AI Engineer specializing in Machine Learning,
-Generative AI, Azure AI Services, n8n Automation,
-and Data Analytics.
+Generative AI, Azure AI Services, n8n Automation and Data Analytics.
 </p>
-
 </div>
 """, unsafe_allow_html=True)
-col1,col2,col3=st.columns(3)
+
+# -----------------------------------
+# LINKS
+# -----------------------------------
+
+col1,col2,col3 = st.columns(3)
 
 with col1:
-    st.link_button(
-        "GitHub",
-        "https://github.com/sfk2021"
-    )
+    st.link_button("GitHub", "https://github.com/sfk2021")
 
 with col2:
-    st.link_button(
-        "LinkedIn",
-        "http://linkedin.com/in/saba-khan-791061216"
-    )
+    st.link_button("LinkedIn", "ADD_LINKEDIN_URL")
 
 with col3:
-    st.write("📧 saba.sk.khan15@gmail.com")
-    st.divider()
+    st.write("📧 ADD_EMAIL_ADDRESS")
 
-st.header("📊 Portfolio Statistics")
+# -----------------------------------
+# KPI
+# -----------------------------------
 
-c1,c2,c3,c4=st.columns(4)
-
-c1.metric("Projects",10)
-c2.metric("Repositories",8)
-c3.metric("Technologies",15)
-c4.metric("ML Models",5)
 st.divider()
 
-st.header("👨‍💻 About Me")
+c1,c2,c3,c4 = st.columns(4)
 
-st.write("""
-Azure AI Engineer Associate Certified.
+c1.metric("Projects", "10+")
+c2.metric("Repositories", "8+")
+c3.metric("Technologies", "15+")
+c4.metric("Models Built", "5+")
 
-Experienced in:
-
-- Machine Learning
-- Generative AI
-- Azure AI Services
-- n8n Automation
-- Data Analytics
-- Streamlit Applications
-""")
-st.divider()
+# -----------------------------------
+# SKILLS
+# -----------------------------------
 
 st.header("🛠️ Tech Stack")
 
 skills = [
-"Python",
-"Pandas",
-"NumPy",
-"Scikit-Learn",
-"TensorFlow",
-"PyTorch",
-"Azure AI",
-"Azure OpenAI",
-"Azure AI Search",
-"Document Intelligence",
-"Streamlit",
-"FastAPI",
-"n8n",
-"Docker",
-"GitHub"
+"Python","Pandas","NumPy","Scikit-Learn",
+"TensorFlow","PyTorch","Azure AI",
+"Azure OpenAI","Azure AI Search",
+"Document Intelligence","Streamlit",
+"FastAPI","n8n","Docker","GitHub"
 ]
 
-cols = st.columns(5)
-
-for i,skill in enumerate(skills):
-    with cols[i % 5]:
-        st.markdown(
-            f"<div class='skill-card'>{skill}</div>",
-            unsafe_allow_html=True
-        )
-st.divider()
-
-st.header("🤖 Machine Learning Projects")
-with st.container():
-
-    st.subheader("🏠 House Price Predictor")
-
-    st.write(
-        "Random Forest Regression model "
-        "for predicting house prices."
+for skill in skills:
+    st.markdown(
+        f"<span class='skill-badge'>{skill}</span>",
+        unsafe_allow_html=True
     )
 
-    c1,c2=st.columns(2)
+# -----------------------------------
+# FEATURED PROJECTS
+# -----------------------------------
 
-    with c1:
-        st.link_button(
-            "GitHub Repository",
-            "https://github.com/sfk2021/HousePricePredictor"
-        )
+st.header("⭐ Featured Projects")
 
-    with c2:
-        st.link_button(
-            "Live Demo",
-            "https://housepricepredictor-randomforestregressionmodel.streamlit.app/"
-        )
-st.subheader("💰 Loan Approval AI")
+projects = [
+    (
+        "🏠 House Price Predictor",
+        "Random Forest Regression",
+        "https://github.com/sfk2021/HousePricePredictor",
+        "https://housepricepredictor-randomforestregressionmodel.streamlit.app/"
+    ),
+    (
+        "💰 Loan Approval AI",
+        "Logistic Regression",
+        "https://github.com/sfk2021/LoanApprovalAILogisticRegression",
+        "https://loanapprovalailogisticregressionmodel.streamlit.app/"
+    ),
+    (
+        "👥 Customer Segmentation",
+        "K-Means Clustering",
+        "https://github.com/sfk2021/CustomerSegmentation",
+        "https://customersegmentation-k-meanclustering.streamlit.app/"
+    ),
+    (
+        "📉 Customer Churn Predict AI",
+        "Classification Model",
+        "https://github.com/sfk2021/CustomerChurnPredictAIClassificationML",
+        "https://customerchurnpredictaiclassificationmlalgorithm.streamlit.app/"
+    ),
+    (
+        "🧹 CleanData AI",
+        "Data Cleaning Dashboard",
+        "https://github.com/sfk2021/datacleaningapp",
+        "https://datacleaningappprofessional.streamlit.app/"
+    )
+]
 
-st.link_button(
-    "GitHub",
-    "https://github.com/sfk2021/LoanApprovalAILogisticRegression"
-)
+for title, desc, github, demo in projects:
 
-st.link_button(
-    "Live Demo",
-    "https://loanapprovalailogisticregressionmodel.streamlit.app/"
-)
-st.subheader("👥 Customer Segmentation")
+    st.markdown(
+        f"""
+        <div class="project-card">
+        <h3>{title}</h3>
+        <p>{desc}</p>
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
-st.link_button(
-    "GitHub",
-    "https://github.com/sfk2021/CustomerSegmentation"
-)
+    a,b = st.columns(2)
 
-st.link_button(
-    "Live Demo",
-    "https://customersegmentation-k-meanclustering.streamlit.app/"
-)
-st.subheader("📉 Customer Churn Predict AI")
+    with a:
+        st.link_button("GitHub Repository", github)
 
-st.link_button(
-    "GitHub",
-    "https://github.com/sfk2021/CustomerChurnPredictAIClassificationML"
-)
+    with b:
+        st.link_button("Live Demo", demo)
 
-st.link_button(
-    "Live Demo",
-    "https://customerchurnpredictaiclassificationmlalgorithm.streamlit.app/"
-)
-st.subheader("🧹 CleanData AI")
-
-st.link_button(
-    "GitHub",
-    "https://github.com/sfk2021/datacleaningapp"
-)
-
-st.link_button(
-    "Live Demo",
-    "https://datacleaningappprofessional.streamlit.app/"
-)
-st.divider()
+# -----------------------------------
+# AZURE AI
+# -----------------------------------
 
 st.header("☁️ Azure AI Projects")
 
-st.subheader("Azure AI Projects")
-
 st.link_button(
-    "Repository",
+    "Azure AI Projects Repository",
     "https://github.com/sfk2021/AI-Projects"
 )
 
-st.subheader("Azure Transcriber App")
-
 st.link_button(
-    "Repository",
+    "Azure Transcriber App",
     "https://github.com/sfk2021/transcriber_app"
 )
-st.divider()
 
-st.header("⚡ n8n Automation")
+# -----------------------------------
+# N8N
+# -----------------------------------
 
-st.subheader("n8n AI Chatbot")
+st.header("⚡ n8n Automation Projects")
 
 st.link_button(
-    "Repository",
+    "n8n AI Chatbot",
     "https://github.com/sfk2021/n8nChatbot"
 )
 
-st.divider()
+# -----------------------------------
+# GENERATIVE AI
+# -----------------------------------
+
+st.header("🧠 Generative AI Projects")
+
+st.markdown("""
+- RAG Chatbot
+- PDF Question Answering
+- Resume Analyzer
+- AI Research Assistant
+- Multi-Document Chat
+""")
+
+# -----------------------------------
+# DEEP LEARNING
+# -----------------------------------
 
 st.header("🖼️ Deep Learning Projects")
 
@@ -240,40 +230,31 @@ st.markdown("""
 - Plant Disease Detection
 - Image Classification
 - Object Detection
-- Face Mask Detection
 - CNN Models
 - Transfer Learning
 """)
-st.divider()
 
-st.header("🧠 Generative AI Projects")
-
-st.markdown("""
-- RAG Chatbot
-- PDF Question Answering
-- AI Research Assistant
-- Resume Analyzer
-- Multi-Document Chat
-- Content Generator
-""")
-st.divider()
+# -----------------------------------
+# CONTACT
+# -----------------------------------
 
 st.header("📬 Contact")
 
 name = st.text_input("Name")
-
 email = st.text_input("Email")
-
 message = st.text_area("Message")
 
 st.button("Send Message")
+
+# -----------------------------------
+# FOOTER
+# -----------------------------------
+
 st.divider()
 
 st.markdown("""
 <center>
-
 Built with ❤️ using Python, Streamlit,
 Azure AI, Machine Learning and Generative AI
-
 </center>
 """, unsafe_allow_html=True)
