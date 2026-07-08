@@ -1,31 +1,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-st.header("📈 Skills Dashboard")
 
-df = pd.DataFrame({
-    "Skill":[
-        "Python",
-        "Machine Learning",
-        "Azure AI",
-        "Generative AI",
-        "n8n",
-        "Streamlit"
-    ],
-    "Level":[95,90,85,85,80,90]
-})
-
-fig = px.bar(
-    df,
-    x="Skill",
-    y="Level",
-    template="plotly_dark"
-)
-
-st.plotly_chart(
-    fig,
-    use_container_width=True
-)
 
 # -----------------------------------
 # PAGE CONFIG
@@ -39,8 +15,9 @@ st.sidebar.markdown("""
 - ⭐ Projects
 - ☁️ Azure AI
 - ⚡ n8n
-- 🧠 GenAI
 - 🖼 Deep Learning
+- 🧠 GenAI
+
 - 📬 Contact
 """)
 st.set_page_config(
@@ -205,6 +182,32 @@ Generative AI, Azure AI Services, n8n Automation and Data Analytics.
 </p>
 </div>
 """, unsafe_allow_html=True)
+
+st.header("📈 Skills Dashboard")
+
+df = pd.DataFrame({
+    "Skill":[
+        "Python",
+        "Machine Learning",
+        "Azure AI",
+        "Generative AI",
+        "n8n",
+        "Streamlit"
+    ],
+    "Level":[95,90,85,85,80,90]
+})
+
+fig = px.bar(
+    df,
+    x="Skill",
+    y="Level",
+    template="plotly_dark"
+)
+
+st.plotly_chart(
+    fig,
+    use_container_width=True
+)
 
 # -----------------------------------
 # LINKS
