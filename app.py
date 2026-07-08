@@ -89,7 +89,50 @@ html, body, [class*="css"] {
 
     margin-bottom:40px;
 }
+.tech-card {
 
+    background: rgba(17,24,39,.8);
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 20px;
+
+    padding: 20px;
+
+    text-align: center;
+
+    color: white;
+
+    transition: all .3s ease;
+
+    margin-bottom: 15px;
+
+    backdrop-filter: blur(10px);
+}
+
+.tech-card:hover {
+
+    transform: translateY(-8px);
+
+    border-color: #2563EB;
+
+    box-shadow:
+    0 10px 25px rgba(37,99,235,.35);
+}
+
+.tech-icon {
+
+    font-size: 32px;
+
+    margin-bottom: 10px;
+}
+
+.tech-title {
+
+    font-weight: 700;
+
+    font-size: 18px;
+}
 .project-card {
 
     background: rgba(17,24,39,.75);
@@ -208,20 +251,42 @@ Azure AI Engineer Associate certified professional focused on:
 
 st.header("🛠️ Tech Stack")
 
-skills = [
-"Python","Pandas","NumPy","Scikit-Learn",
-"TensorFlow","PyTorch","Azure AI",
-"Azure OpenAI","Azure AI Search",
-"Document Intelligence","Streamlit",
-"FastAPI","n8n","Docker","GitHub"
+tech_stack = [
+("🐍","Python"),
+("📊","Pandas"),
+("🔢","NumPy"),
+("🤖","Scikit-Learn"),
+("🧠","TensorFlow"),
+("🔥","PyTorch"),
+("☁️","Azure AI"),
+("💬","Azure OpenAI"),
+("🔍","Azure AI Search"),
+("📄","Document Intelligence"),
+("🚀","Streamlit"),
+("⚡","FastAPI"),
+("🔄","n8n"),
+("🐳","Docker"),
+("📂","GitHub")
 ]
 
-for skill in skills:
-    st.markdown(
-        f"<span class='skill-badge'>{skill}</span>",
-        unsafe_allow_html=True
-    )
+for i in range(0, len(tech_stack), 5):
 
+    cols = st.columns(5)
+
+    for col, tech in zip(cols, tech_stack[i:i+5]):
+
+        icon, name = tech
+
+        with col:
+            st.markdown(
+                f"""
+                <div class="tech-card">
+                    <div class="tech-icon">{icon}</div>
+                    <div class="tech-title">{name}</div>
+                </div>
+                """,
+                unsafe_allow_html=True
+            )
 # -----------------------------------
 # FEATURED PROJECTS
 # -----------------------------------
@@ -307,7 +372,19 @@ st.link_button(
     "n8n AI Chatbot",
     "https://github.com/sfk2021/n8nChatbot"
 )
+# -----------------------------------
+# DEEP LEARNING
+# -----------------------------------
 
+st.header("🖼️ Deep Learning Projects")
+
+st.markdown("""
+- Plant Disease Detection
+- Image Classification
+- Object Detection
+- CNN Models
+- Transfer Learning
+""")
 # -----------------------------------
 # GENERATIVE AI
 # -----------------------------------
@@ -322,19 +399,7 @@ st.markdown("""
 - Multi-Document Chat
 """)
 
-# -----------------------------------
-# DEEP LEARNING
-# -----------------------------------
 
-st.header("🖼️ Deep Learning Projects")
-
-st.markdown("""
-- Plant Disease Detection
-- Image Classification
-- Object Detection
-- CNN Models
-- Transfer Learning
-""")
 
 # -----------------------------------
 # CONTACT
@@ -360,10 +425,6 @@ st.markdown("""
 ### 🚀 Saba Khan
 
 AI Engineer | Azure AI Engineer Associate
-
-Built with Python, Streamlit,
-Azure AI, Machine Learning
-and Generative AI.
 
 </center>
 """, unsafe_allow_html=True)
