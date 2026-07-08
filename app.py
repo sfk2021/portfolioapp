@@ -1,9 +1,48 @@
 import streamlit as st
+import pandas as pd
+import plotly.express as px
+st.header("📈 Skills Dashboard")
+
+df = pd.DataFrame({
+    "Skill":[
+        "Python",
+        "Machine Learning",
+        "Azure AI",
+        "Generative AI",
+        "n8n",
+        "Streamlit"
+    ],
+    "Level":[95,90,85,85,80,90]
+})
+
+fig = px.bar(
+    df,
+    x="Skill",
+    y="Level",
+    template="plotly_dark"
+)
+
+st.plotly_chart(
+    fig,
+    use_container_width=True
+)
 
 # -----------------------------------
 # PAGE CONFIG
 # -----------------------------------
+st.sidebar.title("🚀 Portfolio")
 
+st.sidebar.markdown("""
+- 🏠 Home
+- 👤 About
+- 🛠 Tech Stack
+- ⭐ Projects
+- ☁️ Azure AI
+- ⚡ n8n
+- 🧠 GenAI
+- 🖼 Deep Learning
+- 📬 Contact
+""")
 st.set_page_config(
     page_title="Saba Khan | AI Engineer Portfolio",
     page_icon="🚀",
@@ -24,34 +63,86 @@ html, body, [class*="css"] {
 }
 
 .main {
-    background-color: #F8FAFC;
+    background-color: #0F172A;
+    color: white;
+    
 }
 
 .hero {
-    padding: 60px;
-    border-radius: 30px;
-    background: linear-gradient(135deg,#2563EB,#06B6D4);
-    color: white;
-    text-align: center;
-    box-shadow: 0 20px 50px rgba(37,99,235,0.25);
+    padding: 80px 50px;
+    border-radius: 32px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #2563EB 0%,
+        #06B6D4 50%,
+        #8B5CF6 100%
+    );
+
+    text-align:center;
+    color:white;
+
+    box-shadow:
+    0 0 30px rgba(37,99,235,.4),
+    0 0 60px rgba(139,92,246,.2);
+
+    margin-bottom:40px;
 }
 
 .project-card {
-    background: white;
-    border-radius: 24px;
-    padding: 20px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-    margin-bottom: 20px;
+
+    background: rgba(17,24,39,.75);
+
+    backdrop-filter: blur(12px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:24px;
+
+    padding:25px;
+
+    color:white;
+
+    transition:all .3s ease;
+}
+
+.project-card:hover {
+
+    transform:translateY(-8px);
+
+    box-shadow:
+    0 10px 30px rgba(37,99,235,.35);
 }
 
 .skill-badge {
+
     display:inline-block;
-    padding:10px 16px;
-    margin:5px;
+
+    padding:10px 18px;
+
+    margin:6px;
+
     border-radius:999px;
-    background:#EFF6FF;
-    color:#2563EB;
+
+    background:rgba(37,99,235,.15);
+
+    border:1px solid #2563EB;
+
+    color:#60A5FA;
+
     font-weight:600;
+
+    transition:all .3s ease;
+}
+
+.skill-badge:hover {
+
+    background:#2563EB;
+
+    color:white;
+
+    transform:scale(1.05);
 }
 
 </style>
@@ -99,6 +190,17 @@ c1.metric("Projects", "10+")
 c2.metric("Repositories", "8+")
 c3.metric("Technologies", "15+")
 c4.metric("Models Built", "5+")
+st.header("👤 About Me")
+
+st.markdown("""
+Azure AI Engineer Associate certified professional focused on:
+
+- Machine Learning
+- Generative AI
+- Azure AI Services
+- n8n Automation
+- Data Analytics
+""")
 
 # -----------------------------------
 # SKILLS
@@ -250,11 +352,18 @@ st.button("Send Message")
 # FOOTER
 # -----------------------------------
 
-st.divider()
-
 st.markdown("""
+<hr>
+
 <center>
-Built with ❤️ using Python, Streamlit,
-Azure AI, Machine Learning and Generative AI
+
+### 🚀 Saba Khan
+
+AI Engineer | Azure AI Engineer Associate
+
+Built with Python, Streamlit,
+Azure AI, Machine Learning
+and Generative AI.
+
 </center>
 """, unsafe_allow_html=True)
