@@ -222,7 +222,7 @@ with col2:
     st.link_button("LinkedIn", "https://www.linkedin.com/in/saba-khan-791061216/")
 
 with col3:
-    st.write("📧 saba.sk.khan15@gmail.com")
+    st.write("📧 Email","saba.sk.khan15@gmail.com")
 
 # -----------------------------------
 # KPI
