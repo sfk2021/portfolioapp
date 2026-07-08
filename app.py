@@ -74,11 +74,11 @@ with col1:
 with col2:
     st.link_button(
         "LinkedIn",
-        "ADD_LINKEDIN_URL"
+        "www.linkedin.com/in/saba-khan-791061216"
     )
 
 with col3:
-    st.write("📧 ADD_EMAIL")
+    st.write("📧 saba.sk.khan15@gmail.com")
     st.divider()
 
 st.header("📊 Portfolio Statistics")
