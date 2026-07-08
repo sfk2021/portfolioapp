@@ -82,10 +82,10 @@ with col1:
     st.link_button("GitHub", "https://github.com/sfk2021")
 
 with col2:
-    st.link_button("LinkedIn", "ADD_LINKEDIN_URL")
+    st.link_button("LinkedIn", "https://www.linkedin.com/in/saba-khan-791061216/")
 
 with col3:
-    st.write("📧 ADD_EMAIL_ADDRESS")
+    st.write("📧 saba.sk.khan15@gmail.com")
 
 # -----------------------------------
 # KPI
